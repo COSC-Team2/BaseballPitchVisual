@@ -1,0 +1,2 @@
+# Visualize baseball pitch in VR
+Developed for our senior Software Engineering class. This project, headed by Dr. Mazzei, focuses on gathering massive amounts of data from TrackMan units across the country and visualizing it in virtual reality. This should allow coaches to analyze the trajectory of a baseball in slow-motion for use in training pitchers and batters. Using game design principles and a functioning physics simulation, we intend for it to be easy to use and as accurate as possible.
