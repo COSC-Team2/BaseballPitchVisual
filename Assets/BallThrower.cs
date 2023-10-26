@@ -1,103 +1,112 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BallThrower : MonoBehaviour
+public class BallThrowerController : MonoBehaviour
 {
-    public GameObject baseballPrefab;
-    public Transform mound;
-    public Transform plate;
+    [Header("Configuration")]
+    public GameObject ballPrefab;
+    public Button throwButton;
 
-    // Pitch Parameters
-    [Header("Pitch Parameters")]
-    public PitchType pitchType = PitchType.Fastball;
-    public float velocityMPH = 90f;  // Initial velocity in miles per hour
-    public float spinRate = 2000f;   // Spin rate in RPM
-    public Vector3 spinAxisDegrees = new Vector3(0f, 0f, 0f);  // Spin axis in degrees (Euler angles)
-    public float horizontalBreak = 0f;     // Horizontal break in inches
-    public float inducedVerticalBreak = 0f; // Induced vertical break in inches
-    public Transform startingPosition; // Transform representing the starting position of the ball
+    [Header("Starting Position")]
+    public float startingHeight;
+    public float startingSide;
+    public float startingExtension;
 
-    // Visual Trail Parameters
-    [Header("Visual Trail Parameters")]
-    public Material trailMaterial;
-    public float trailLifetime = 3f;  // Lifetime of the trail in seconds
-    public float trailWidth = 0.1f;   // Width of the trail
+    [Header("Ending Position")]
+    public float endingHeight;
+    public float endingSide;
+    // Ending extension will use the startingExtension for the z-value.
 
-    private GameObject currentBall;
+    public float horizontalBreak;
+    public float inducedVerticalBreak;
+    public float verticalBreak;
+    public float startVelocity;
+    public float endVelocity;
+    public float spinAxis;  // 360-degree value
+    public float tilt;  // in degrees
+    public float spinRate;  // RPM
+
+    [Header("Visual Trail")]
+    public Color trailColor;
+    public float trailWidth;
+    public float trailDuration;
 
     public enum PitchType
     {
-        Fastball,
-        Curveball,
-        Slider,
-        Changeup
-        // Add more pitch types as needed
+        Fastball, Curveball, Slider, Changeup
     }
+    public PitchType pitchType;
 
-    // Start is called before the first frame update
+    private GameObject currentBall;
+
     void Start()
     {
-        // Get the Button component from your UI button
-        Button throwButton = GetComponent<Button>();
-
-        // Add a listener to call the ThrowBall() method when the button is clicked
         throwButton.onClick.AddListener(ThrowBall);
     }
 
     void ThrowBall()
     {
-        // Check if there is already a ball, destroy it if there is
         if (currentBall != null)
-        {
             Destroy(currentBall);
+
+        Vector3 start = new Vector3(startingHeight, startingSide, startingExtension);
+        currentBall = Instantiate(ballPrefab, start, Quaternion.identity);
+        StartCoroutine(MoveBallOnParabola(currentBall));
+    }
+
+    IEnumerator MoveBallOnParabola(GameObject ball)
+    {
+        Vector3 controlPoint = CalculateControlPoint();
+
+        float t = 0;
+        Vector3 start = new Vector3(startingHeight, startingSide, startingExtension);
+        Vector3 end = new Vector3(endingHeight, endingSide, startingExtension);
+        Vector3 previousPosition = start;
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+            Vector3 newPos = CalculateBezierPoint(t, start, controlPoint, end);
+            Vector3 velocityDirection = (newPos - previousPosition).normalized;
+            float currentVelocity = Mathf.Lerp(startVelocity, endVelocity, t);
+            ball.transform.position += velocityDirection * currentVelocity * Time.deltaTime;
+            previousPosition = ball.transform.position;
+            ApplySpin(ball.GetComponent<Rigidbody>(), spinAxis, tilt, spinRate);
+            yield return null;
         }
 
-        // Instantiate the baseball at the specified starting position
-        currentBall = Instantiate(baseballPrefab, startingPosition.position, Quaternion.identity);
-
-        // Apply pitch parameters
-        Rigidbody rb = currentBall.GetComponent<Rigidbody>();
-        Vector3 direction = (plate.position - mound.position).normalized;
-        rb.velocity = CalculatePitchVelocity(direction, velocityMPH);
-        ApplySpin(rb, spinAxisDegrees, spinRate);
-        ApplyBreaks(rb, horizontalBreak, inducedVerticalBreak);
-
-        // Add a Trail Renderer component to the ball
-        TrailRenderer trailRenderer = currentBall.AddComponent<TrailRenderer>();
-        trailRenderer.material = trailMaterial;
-        trailRenderer.time = trailLifetime;
-        trailRenderer.startWidth = trailWidth;
-        trailRenderer.endWidth = trailWidth;
-
-        // Destroy the ball and its trail after the specified lifetime
-        Destroy(currentBall, trailLifetime);
+        yield return new WaitForSeconds(2); // Let physics take over for 2 seconds
+        Destroy(ball);
     }
 
-    Vector3 CalculatePitchVelocity(Vector3 direction, float velocityMPH)
+    Vector3 CalculateControlPoint()
     {
-        float velocityMPS = velocityMPH * 0.44704f; // Convert MPH to meters per second
-        return direction * velocityMPS;
+        Vector3 midPoint = (new Vector3(startingHeight, startingSide, startingExtension) +
+                            new Vector3(endingHeight, endingSide, startingExtension)) / 2;
+        return new Vector3(midPoint.x + horizontalBreak, midPoint.y + inducedVerticalBreak,
+                           midPoint.z + verticalBreak);
     }
 
-    void ApplySpin(Rigidbody rb, Vector3 axisDegrees, float spinRate)
+    Vector3 CalculateBezierPoint(float t, Vector3 start, Vector3 control, Vector3 end)
     {
-        Vector3 axisRadians = new Vector3(
-            axisDegrees.x * Mathf.Deg2Rad,
-            axisDegrees.y * Mathf.Deg2Rad,
-            axisDegrees.z * Mathf.Deg2Rad
-        );
-
-        Vector3 spin = axisRadians.normalized * (spinRate * 2f * Mathf.PI / 60f); // Convert RPM to radians per second
-        rb.AddTorque(spin, ForceMode.Impulse);
+        float u = 1 - t;
+        Vector3 point = (u * u * start) + (2 * u * t * control) + (t * t * end);
+        return point;
     }
 
-    void ApplyBreaks(Rigidbody rb, float horizontalBreak, float inducedVerticalBreak)
+    void ApplySpin(Rigidbody rb, float spinAxisDegrees, float tiltDegrees, float spinRateRPM)
     {
-        // Apply horizontal and vertical breaks based on your requirements
-        // ... your code here ...
+        // Convert spin axis and tilt into a 3D rotation axis
+        Vector3 spinDirection = new Vector3(Mathf.Sin(spinAxisDegrees * Mathf.Deg2Rad) * Mathf.Sin(tiltDegrees * Mathf.Deg2Rad),
+                                            Mathf.Cos(tiltDegrees * Mathf.Deg2Rad),
+                                            Mathf.Cos(spinAxisDegrees * Mathf.Deg2Rad) * Mathf.Sin(tiltDegrees * Mathf.Deg2Rad));
+        Vector3 spin = spinDirection.normalized * (spinRateRPM * 2f * Mathf.PI / 60f); // Convert RPM to radians per second
+        rb.AddTorque(spin);
     }
 }
+
+
+
+
 
 

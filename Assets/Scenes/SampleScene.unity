@@ -3324,19 +3324,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseballPrefab: {fileID: 1883821138}
-  mound: {fileID: 713489402}
-  plate: {fileID: 609192745}
+  ballPrefab: {fileID: 1883821138}
+  throwButton: {fileID: 434189446}
+  startingHeight: 6.28194
+  startingSide: 0.89337
+  startingExtension: 6.19404
+  endingHeight: 3.11286
+  endingSide: 0.3647
+  horizontalBreak: 13
+  inducedVerticalBreak: 18
+  verticalBreak: -16
+  startVelocity: 90
+  endVelocity: 90
+  spinAxis: 217.6
+  tilt: 1
+  spinRate: 1880
+  trailColor: {r: 0.06808472, g: 0.79640615, b: 0.9622642, a: 1}
+  trailWidth: 0.3
+  trailDuration: 3
   pitchType: 0
-  velocityMPH: 90
-  spinRate: 2299.677
-  spinAxisDegrees: {x: 0, y: 0, z: 0}
-  horizontalBreak: -10.093
-  inducedVerticalBreak: -4.879
-  startingPosition: {fileID: 713489402}
-  trailMaterial: {fileID: 2100000, guid: 83eabfe673263a445972586e5d8b56ee, type: 2}
-  trailLifetime: 5
-  trailWidth: 0.1
 --- !u!4 &1397358957
 Transform:
   m_ObjectHideFlags: 0
@@ -3361,9 +3367,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1397358955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 335d77dca284cf14da747cbfce065685, type: 3}
+  m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 1883821138}
+  throwButton: {fileID: 434189446}
+  startingHeight: 0
+  startingSide: 0
+  startingExtension: 0
+  endingHeight: 0
+  endingSide: 0
+  horizontalBreak: 0
+  inducedVerticalBreak: 0
+  verticalBreak: 0
+  startVelocity: 10
+  endVelocity: 5
+  spinAxis: 0
+  tilt: 12
+  spinRate: 360
+  trailColor: {r: 1, g: 1, b: 1, a: 1}
+  trailWidth: 0.6
+  trailDuration: 3
+  pitchType: 0
 --- !u!1001 &1414604244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4073,7 +4098,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.0962e-41, w: 7.34684e-40}
+  m_BoundingSphereOverride: {x: 2.2e-44, y: 1.2305956e-38, z: 1.83693e-40, w: 1.2305956e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
