@@ -1,64 +1,73 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+
+public class buttonThrow : MonoBehaviour
+{
+    public Rigidbody rb;
+    public Vector3 initBallPosition = new Vector3(0, 2, -18);
+    public float v0x = 0;
+    public float v0y = 5;
+    public float v0z = 20;
+    private bool isMoving = true;
+    public Button throwButton;
+
+    void Start()
+    {
+        throwButton.onClick.AddListener(Throw);
+    }
+    void Throw()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        rb.position = initBallPosition;
+        rb.velocity = new Vector3(v0x, v0y, v0z);
+        isMoving = true;
+    }
+    void Stop()
+    {
+        rb.useGravity = false;
+        rb.position = initBallPosition;
+    }
+
+
+
+/*    // Update is called once per frame
+    void Update()
+    {
+        
+    }*/
+}
+
+
+
+
+
+/*using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 
 public class BallThrowerController : MonoBehaviour
 {
-
     public string fileName = "data.csv"; // Name of the CSV file
-    // public GameObject ballPrefab; // The GameObject whose position you want to set
-    private List<Vector3> positions = new List<Vector3>();
-    private int currentIndex = 0;
-
-
-    [Header("Configuration")]
-    public GameObject ballPrefab;
-    public Button throwButton;
-
-    [Header("Starting Position")]
-    public float startingHeight;
-    public float startingSide;
-    public float startingExtension;
-
-    [Header("Ending Position")]
-    public float endingHeight;
-    public float endingSide;
-    // Ending extension will use the startingExtension for the z-value.
-
-    public float horizontalBreak;
-    public float inducedVerticalBreak;
-    public float verticalBreak;
-    public float startVelocity;
-    public float endVelocity;
-    public float spinAxis;  // 360-degree value
-    public float tilt;  // in degrees
-    public float spinRate;  // RPM
-
-    [Header("Visual Trail")]
-    public Color trailColor;
-    public float trailWidth;
-    public float trailDuration;
-
-    public enum PitchType
-    {
-        Fastball, Curveball, Slider, Changeup
-    }
-    public PitchType pitchType;
-
-    private GameObject currentBall;
+    public GameObject ballPrefab; // Prefab for the ball
+    public Button throwButton; // Button for throwing
+    private List<Vector3> points = new List<Vector3>();
+    private List<GameObject> balls = new List<GameObject>();
+    public float speed = 5.0f; // Adjust the speed of the ball
 
     void Start()
     {
-        throwButton.onClick.AddListener(ThrowBall);
+        ReadDataFromCSV();
+        throwButton.onClick.AddListener(PlotSpline);
     }
 
-    void ThrowBall()
+    void ReadDataFromCSV()
     {
-        if (currentBall != null)
-            Destroy(currentBall);
-
         string filePath = Path.Combine(Application.dataPath, fileName);
         if (File.Exists(filePath))
         {
@@ -73,11 +82,9 @@ public class BallThrowerController : MonoBehaviour
                     float y = float.Parse(values[1]);
                     float z = float.Parse(values[2]);
 
-                    positions.Add(new Vector3(x, y, z));
+                    points.Add(new Vector3(x, y, z));
                 }
             }
-
-            InvokeRepeating("SetPositionFromData", 0.2f, 0.2f);
         }
         else
         {
@@ -85,17 +92,54 @@ public class BallThrowerController : MonoBehaviour
         }
     }
 
-    void SetPositionFromData()
+    void PlotSpline()
     {
-        if (currentIndex < positions.Count)
+        GameObject spline = new GameObject("Spline");
+        var splineComponent = spline.AddComponent<LineRenderer>();
+        splineComponent.material = new Material(Shader.Find("Sprites/Default"));
+
+        Vector3[] pointArray = points.ToArray();
+
+        splineComponent.positionCount = pointArray.Length;
+        splineComponent.startWidth = 0.2f;
+        splineComponent.endWidth = 0.2f;
+
+        for (int i = 0; i < pointArray.Length; i++)
         {
-            ballPrefab.transform.position = positions[currentIndex];
-            currentIndex++;
+            splineComponent.SetPosition(i, pointArray[i]);
         }
-        else
+
+        StartCoroutine(FollowSpline());
+    }
+
+    IEnumerator FollowSpline()
+    {
+        for (int i = 0; i < points.Count - 3; i++)
         {
-            Debug.Log("End of data reached.");
-            CancelInvoke("SetPositionFromData");
+            float time = 0;
+            while (time < 1)
+            {
+                time += Time.deltaTime * speed;
+                Vector3 ballPosition = GetCatmullRomPosition(time, points[i], points[i + 1], points[i + 2], points[i + 3]);
+                GameObject ball = Instantiate(ballPrefab, ballPosition, Quaternion.identity);
+                balls.Add(ball);
+                yield return null;
+            }
         }
     }
+
+    // Catmull-Rom spline interpolation
+    private Vector3 GetCatmullRomPosition(float t, Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        float tt = t * t;
+        float ttt = tt * t;
+
+        Vector3 b1 = 0.5f * (2 * p1);
+        Vector3 b2 = 0.5f * (-p0 + p2);
+        Vector3 b3 = 0.5f * (2 * p0 - 5 * p1 + 4 * p2 - p3);
+        Vector3 b4 = 0.5f * (-p0 + 3 * p1 - 3 * p2 + p3);
+
+        return b1 + b2 * t + b3 * tt + b4 * ttt;
+    }
 }
+*/

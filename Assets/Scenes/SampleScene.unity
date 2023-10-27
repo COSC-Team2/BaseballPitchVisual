@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1397358956}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BallThrower, Assembly-CSharp
         m_MethodName: ThrowBall
         m_Mode: 1
@@ -3294,101 +3294,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380387990}
   m_CullTransparentMesh: 1
---- !u!1 &1397358955
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1397358957}
-  - component: {fileID: 1397358956}
-  - component: {fileID: 1397358958}
-  m_Layer: 0
-  m_Name: BallThrowController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1397358956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397358955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 1883821138}
-  throwButton: {fileID: 434189446}
-  startingHeight: 6.28194
-  startingSide: 0.89337
-  startingExtension: 6.19404
-  endingHeight: 3.11286
-  endingSide: 0.3647
-  horizontalBreak: 13
-  inducedVerticalBreak: 18
-  verticalBreak: -16
-  startVelocity: 90
-  endVelocity: 90
-  spinAxis: 217.6
-  tilt: 1
-  spinRate: 1880
-  trailColor: {r: 0.06808472, g: 0.79640615, b: 0.9622642, a: 1}
-  trailWidth: 0.3
-  trailDuration: 3
-  pitchType: 0
---- !u!4 &1397358957
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397358955}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: -8.2, z: -6.77}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1397358958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397358955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 1883821138}
-  throwButton: {fileID: 434189446}
-  startingHeight: 0
-  startingSide: 0
-  startingExtension: 0
-  endingHeight: 0
-  endingSide: 0
-  horizontalBreak: 0
-  inducedVerticalBreak: 0
-  verticalBreak: 0
-  startVelocity: 10
-  endVelocity: 5
-  spinAxis: 0
-  tilt: 12
-  spinRate: 360
-  trailColor: {r: 1, g: 1, b: 1, a: 1}
-  trailWidth: 0.6
-  trailDuration: 3
-  pitchType: 0
 --- !u!1001 &1414604244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3400,6 +3305,10 @@ PrefabInstance:
     - target: {fileID: 4390248004135900908, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
       propertyPath: m_Name
       value: BaseballField
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390248004135900908, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4962889162126893578, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
       propertyPath: m_CastShadows
@@ -4023,6 +3932,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761111717}
   m_CullTransparentMesh: 1
+--- !u!1 &1797306555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797306557}
+  - component: {fileID: 1797306556}
+  m_Layer: 0
+  m_Name: TimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1797306556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797306555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1064cc6df6016e1419422c47a88385e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slowdownFactor: 0.05
+  slowdownLength: 2
+--- !u!4 &1797306557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797306555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815318735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4098,7 +4053,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 2.2e-44, y: 1.2305956e-38, z: 1.83693e-40, w: 1.2305956e-38}
+  m_BoundingSphereOverride: {x: 0, y: 6e-45, z: 1.0888e-41, w: 8.531834e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4651,15 +4606,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.012
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.71
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -19.039
+      value: -18.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4690,8 +4645,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_Name
       value: Baseball
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742473837712756890, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
+      propertyPath: m_LODs.Array.data[0].screenRelativeHeight
+      value: 0.2839508
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LODs.Array.data[1].screenRelativeHeight
@@ -4704,6 +4667,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1883821141}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883821144}
   m_SourcePrefab: {fileID: 100100000, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
 --- !u!1 &1883821138 stripped
 GameObject:
@@ -4726,17 +4692,35 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1883821144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883821138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1883821141}
+  initBallPosition: {x: 0, y: 2, z: -18}
+  v0x: 0
+  v0y: 5
+  v0z: 20
+  throwButton: {fileID: 434189446}
 --- !u!1 &1995320727
 GameObject:
   m_ObjectHideFlags: 0
@@ -5229,6 +5213,6 @@ SceneRoots:
   - {fileID: 713847850}
   - {fileID: 925436973}
   - {fileID: 1883821137}
-  - {fileID: 1397358957}
   - {fileID: 713489402}
   - {fileID: 609192745}
+  - {fileID: 1797306557}
