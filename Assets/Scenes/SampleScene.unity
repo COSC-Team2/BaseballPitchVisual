@@ -3302,6 +3302,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 320527386043519105, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 320527386043519105, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 320527386043519105, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 10bde48ef542d6a4fbee12145283824a, type: 2}
+    - target: {fileID: 320527386043519105, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 320527386043519105, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4390248004135900908, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
       propertyPath: m_Name
       value: BaseballField
@@ -3313,6 +3333,10 @@ PrefabInstance:
     - target: {fileID: 4962889162126893578, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
       propertyPath: m_CastShadows
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345312446608728123, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7074222410751455113, guid: 44748ded097c11c429adb3c95822ff92, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4610,11 +4634,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.7
+      value: -18.67
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4670,6 +4694,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1883821144}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1883821145}
   m_SourcePrefab: {fileID: 100100000, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
 --- !u!1 &1883821138 stripped
 GameObject:
@@ -4698,11 +4725,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &1883821144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4718,9 +4745,30 @@ MonoBehaviour:
   rb: {fileID: 1883821141}
   initBallPosition: {x: 0, y: 2, z: -18}
   v0x: 0
-  v0y: 5
-  v0z: 20
+  v0y: 10
+  v0z: 10
   throwButton: {fileID: 434189446}
+--- !u!135 &1883821145
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883821138}
+  m_Material: {fileID: 13400000, guid: 590dbebc6f287b940ac52b3dfea3bfc1, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1995320727
 GameObject:
   m_ObjectHideFlags: 0
