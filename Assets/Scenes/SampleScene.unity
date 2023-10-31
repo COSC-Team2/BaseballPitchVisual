@@ -4035,7 +4035,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -0, z: 0, w: -3.288899e-36}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 1.7617e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4686,7 +4686,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -4704,10 +4704,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1883821141}
-  initBallPosition: {x: 0, y: 2, z: -18}
-  v0x: 0
-  v0y: 10
-  v0z: 10
+  initBallPosition: {x: -0.23351456, y: 15.2, z: 1.8616747}
+  x: 16.508419
+  xv: -40.33092
+  xa: 5.0152187
+  y: 1.9088677
+  yv: -1.3783877
+  ya: -2.159701
+  z: -0.26991552
+  zv: 1.1798575
+  za: -1.9162366
   throwButton: {fileID: 434189446}
 --- !u!135 &1883821145
 SphereCollider:
