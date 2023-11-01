@@ -32,6 +32,7 @@ public class buttonThrow : MonoBehaviour
 
         // rb.velocity = new Vector3(v0x, v0y, v0z);
         // isMoving = true;
+        rb.GetComponent<TrailRenderer>().Clear();
     }
     void Stop()
     {
@@ -45,9 +46,9 @@ public class buttonThrow : MonoBehaviour
     {
         t += Time.deltaTime;
         float tsqr = Mathf.Pow(t, 2);
-        float tx = x + xv * t + xa * tsqr;
+        float tz = -x - xv * t - xa * tsqr;
         float ty = y + yv * t + ya * tsqr;
-        float tz = z + zv * t + za * tsqr;
+        float tx = - z - zv * t - za * tsqr;
 
         rb.position = new Vector3(tx, ty, tz);
         // Debug.Log(rb.transform.position);
