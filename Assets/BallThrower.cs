@@ -39,8 +39,8 @@ public class buttonThrow : MonoBehaviour
 
 
         // Update is called once per frame
-        void Update()
+        /*void Update()
         {
         Debug.Log(rb.transform.position);
-        }
+        }*/
 }
