@@ -2,102 +2,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
-public class BallThrower : MonoBehaviour
+public class buttonThrow : MonoBehaviour
 {
-    public GameObject baseballPrefab;
-    public Transform mound;
-    public Transform plate;
+    public Rigidbody rb;
+    private float c = 0.304f;
+    private float t = 0.0f;
+    public float x0 = 54.30401f;
+    public float xv = -132.6675f;
+    public float xa = 16.49743f;
+    public float y0 = 6.27917f;
+    public float yv = -4.53417f;
+    public float ya = -7.10428f;
+    public float z0 = -0.88788f;
+    public float zv = 3.88111f;
+    public float za = -6.30341f;
 
-    // Pitch Parameters
-    [Header("Pitch Parameters")]
-    public PitchType pitchType = PitchType.Fastball;
-    public float velocityMPH = 90f;  // Initial velocity in miles per hour
-    public float spinRate = 2000f;   // Spin rate in RPM
-    public Vector3 spinAxisDegrees = new Vector3(0f, 0f, 0f);  // Spin axis in degrees (Euler angles)
-    public float horizontalBreak = 0f;     // Horizontal break in inches
-    public float inducedVerticalBreak = 0f; // Induced vertical break in inches
-    public Transform startingPosition; // Transform representing the starting position of the ball
+    public Button throwButton;
 
-    // Visual Trail Parameters
-    [Header("Visual Trail Parameters")]
-    public Material trailMaterial;
-    public float trailLifetime = 3f;  // Lifetime of the trail in seconds
-    public float trailWidth = 0.1f;   // Width of the trail
 
-    private GameObject currentBall;
-
-    public enum PitchType
-    {
-        Fastball,
-        Curveball,
-        Slider,
-        Changeup
-        // Add more pitch types as needed
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
-        // Get the Button component from your UI button
-        Button throwButton = GetComponent<Button>();
-
-        // Add a listener to call the ThrowBall() method when the button is clicked
-        throwButton.onClick.AddListener(ThrowBall);
+        throwButton.onClick.AddListener(Throw);
+    }
+    void Throw()
+    {
+        t = 0f;
+        Debug.Log("Throw");
+        rb = GetComponent<Rigidbody>();
+        // rb.useGravity = true;
+        rb.position = new Vector3(x0, y0, z0);
+        // isMoving = true;
+    }
+    void Stop()
+    {
+        Debug.Log("Stop");
+        // rb.useGravity = false;
+        // rb.position = initBallPosition;
     }
 
-    void ThrowBall()
+    // Update is called once per frame
+    void Update()
     {
-        // Check if there is already a ball, destroy it if there is
-        if (currentBall != null)
+        float tsqr = Mathf.Pow(t, 2);
+        float z = c*(-x0 - xv * t - xa * tsqr);
+        float y = c*(y0 + yv * t + ya * tsqr);
+        float x = c*(-z0 - zv * t - za * tsqr);
+
+        rb.position = new Vector3(x, y, z);
+        if (t < 0.05f)
         {
-            Destroy(currentBall);
+            ClearTrail();
+        }
+        if (z < 0.0 && y > 0.0)      // if position (z) = home plate, time stops updating
+        {
+            t += Time.deltaTime;
         }
 
-        // Instantiate the baseball at the specified starting position
-        currentBall = Instantiate(baseballPrefab, startingPosition.position, Quaternion.identity);
-
-        // Apply pitch parameters
-        Rigidbody rb = currentBall.GetComponent<Rigidbody>();
-        Vector3 direction = (plate.position - mound.position).normalized;
-        rb.velocity = CalculatePitchVelocity(direction, velocityMPH);
-        ApplySpin(rb, spinAxisDegrees, spinRate);
-        ApplyBreaks(rb, horizontalBreak, inducedVerticalBreak);
-
-        // Add a Trail Renderer component to the ball
-        TrailRenderer trailRenderer = currentBall.AddComponent<TrailRenderer>();
-        trailRenderer.material = trailMaterial;
-        trailRenderer.time = trailLifetime;
-        trailRenderer.startWidth = trailWidth;
-        trailRenderer.endWidth = trailWidth;
-
-        // Destroy the ball and its trail after the specified lifetime
-        Destroy(currentBall, trailLifetime);
+        Debug.Log($"X={x} | Y={y} | Z={z} | T={t}");
     }
-
-    Vector3 CalculatePitchVelocity(Vector3 direction, float velocityMPH)
-    {
-        float velocityMPS = velocityMPH * 0.44704f; // Convert MPH to meters per second
-        return direction * velocityMPS;
-    }
-
-    void ApplySpin(Rigidbody rb, Vector3 axisDegrees, float spinRate)
-    {
-        Vector3 axisRadians = new Vector3(
-            axisDegrees.x * Mathf.Deg2Rad,
-            axisDegrees.y * Mathf.Deg2Rad,
-            axisDegrees.z * Mathf.Deg2Rad
-        );
-
-        Vector3 spin = axisRadians.normalized * (spinRate * 2f * Mathf.PI / 60f); // Convert RPM to radians per second
-        rb.AddTorque(spin, ForceMode.Impulse);
-    }
-
-    void ApplyBreaks(Rigidbody rb, float horizontalBreak, float inducedVerticalBreak)
-    {
-        // Apply horizontal and vertical breaks based on your requirements
-        // ... your code here ...
-    }
+    void ClearTrail()
+        {
+            rb.GetComponent<TrailRenderer>().Clear();
+            Debug.Log("Trail Cleared");
+        }
 }
-
-
