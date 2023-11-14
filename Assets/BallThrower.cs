@@ -30,7 +30,7 @@ public class buttonThrow : MonoBehaviour
     {
         t = 0f;
         Debug.Log("Throw");
-        rb = GetComponent<Rigidbody>();
+        rb = Instantiate(GetComponent<Rigidbody>());
         // rb.useGravity = true;
         rb.position = new Vector3(x0, y0, z0);
         // isMoving = true;
