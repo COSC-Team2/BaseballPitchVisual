@@ -22,18 +22,35 @@ public class buttonThrow : MonoBehaviour
     public Button throwButton;
 
 
+
     void Start()
     {
         throwButton.onClick.AddListener(Throw);
     }
     void Throw()
     {
+        float tsqr = Mathf.Pow(t, 2);
+        float z = c * (-x0 - xv * t - xa * tsqr);
+        float y = c * (y0 + yv * t + ya * tsqr);
+        float x = c * (-z0 - zv * t - za * tsqr);
+
         t = 0f;
         Debug.Log("Throw");
         rb = Instantiate(GetComponent<Rigidbody>());
         // rb.useGravity = true;
         rb.position = new Vector3(x0, y0, z0);
         // isMoving = true;
+
+        while (z !< 0.0 && y !> 0.0)
+        {
+            t += Time.deltaTime;
+
+            rb.position = new Vector3(x, y, z);
+            if (t < 0.05f)
+            {
+                ClearTrail();
+            }
+        }
     }
     void Stop()
     {
@@ -43,7 +60,7 @@ public class buttonThrow : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         float tsqr = Mathf.Pow(t, 2);
         float z = c*(-x0 - xv * t - xa * tsqr);
@@ -61,7 +78,7 @@ public class buttonThrow : MonoBehaviour
         }
 
         Debug.Log($"X={x} | Y={y} | Z={z} | T={t}");
-    }
+    }*/
     void ClearTrail()
         {
             rb.GetComponent<TrailRenderer>().Clear();
