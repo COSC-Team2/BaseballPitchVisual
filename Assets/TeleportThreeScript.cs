@@ -17,6 +17,9 @@ public class TeleportToSelectedLocation : MonoBehaviour
     [Tooltip("Destination transform for the third location.")]
     public Transform location3;
 
+    [Tooltip("Destination transform for the fourth location.")]
+    public Transform location4;
+
     public void TeleportToLocation1()
     {
         TeleportToDestination(location1);
@@ -30,6 +33,11 @@ public class TeleportToSelectedLocation : MonoBehaviour
     public void TeleportToLocation3()
     {
         TeleportToDestination(location3);
+    }
+
+    public void TeleportToLocation4()
+    {
+        TeleportToDestination(location4);
     }
 
     private void TeleportToDestination(Transform destination)

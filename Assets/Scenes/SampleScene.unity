@@ -427,6 +427,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33414661}
   m_CullTransparentMesh: 1
+--- !u!1 &66605575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66605576}
+  m_Layer: 0
+  m_Name: LeftBatterView (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &66605576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66605575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.43, y: -0.06, z: 0.69}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &69669218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2859,7 +2890,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1317498290}
         m_TargetAssemblyTypeName: TeleportToSelectedLocation, Assembly-CSharp
-        m_MethodName: TeleportToLocation3
+        m_MethodName: TeleportToLocation4
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6298,6 +6329,7 @@ MonoBehaviour:
   location1: {fileID: 1249224473}
   location2: {fileID: 1184572453}
   location3: {fileID: 1700607693}
+  location4: {fileID: 0}
 --- !u!4 &1307657161
 Transform:
   m_ObjectHideFlags: 0
@@ -6361,6 +6393,7 @@ MonoBehaviour:
   location1: {fileID: 1668239007}
   location2: {fileID: 1165637713}
   location3: {fileID: 1910108921}
+  location4: {fileID: 66605576}
 --- !u!1 &1318666505
 GameObject:
   m_ObjectHideFlags: 0
@@ -9291,7 +9324,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 7e-45, z: 1.399e-41, w: 2.2989525e+20}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.3815e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -11310,6 +11343,7 @@ SceneRoots:
   - {fileID: 1249224473}
   - {fileID: 1184572453}
   - {fileID: 1700607693}
+  - {fileID: 66605576}
   - {fileID: 2030906297}
   - {fileID: 1579829528}
   - {fileID: 1307657161}
