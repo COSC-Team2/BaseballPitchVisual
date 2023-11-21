@@ -533,6 +533,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 69669218}
   m_CullTransparentMesh: 1
+--- !u!1 &83279194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83279196}
+  - component: {fileID: 83279197}
+  m_Layer: 0
+  m_Name: FastBallPresetAssistController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &83279196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83279194}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.8669643, y: -4.752937, z: -7.19499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &83279197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83279194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84efc5f06980b134f89e4291ef703d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballThrowerController: {fileID: 377736185}
 --- !u!1 &183446436
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 205746658}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83279197}
+        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
+        m_MethodName: curveballUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &205746658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -826,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &253703857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1622,7 +1679,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 359377027}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83279197}
+        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
+        m_MethodName: fastballUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &359377027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1751,6 +1820,61 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &377736182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377736184}
+  - component: {fileID: 377736185}
+  m_Layer: 0
+  m_Name: FastBallThrowerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &377736184
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377736182}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.8669643, y: -4.752937, z: -7.19499}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &377736185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377736182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4368879f8651784fbfeb425531aa939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 1883821141}
+  x0: 54.30401
+  xv: -132.6675
+  xa: 16.49743
+  y0: 6.27917
+  yv: -4.53417
+  ya: -7.10428
+  z0: -0.88788
+  zv: 3.88111
+  za: -6.30341
+  throwButton: {fileID: 0}
 --- !u!1 &390843417
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,10 +2255,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1883821138}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: 
-        m_Mode: 6
+      - m_Target: {fileID: 377736185}
+        m_TargetAssemblyTypeName: BallThrowerController, Assembly-CSharp
+        m_MethodName: Throw
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3407,7 +3531,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 748905581}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83279197}
+        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
+        m_MethodName: changeUpUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &748905581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4007,7 +4143,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 944037625}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 83279197}
+        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
+        m_MethodName: sliderUpdate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &944037625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6329,7 +6477,7 @@ MonoBehaviour:
   location1: {fileID: 1249224473}
   location2: {fileID: 1184572453}
   location3: {fileID: 1700607693}
-  location4: {fileID: 0}
+  location4: {fileID: 1249224473}
 --- !u!4 &1307657161
 Transform:
   m_ObjectHideFlags: 0
@@ -6555,14 +6703,13 @@ GameObject:
   - component: {fileID: 1359942676}
   - component: {fileID: 1359942675}
   - component: {fileID: 1359942674}
-  - component: {fileID: 1359942677}
   m_Layer: 5
   m_Name: ReadyToPitch?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1359942674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6625,29 +6772,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1359942677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1359942673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c618bc0f3ce98dc45a78552c0d56fc6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 1883821141}
-  x0: 54.30401
-  xv: -132.6675
-  xa: 16.49743
-  y0: 6.27917
-  yv: -4.53417
-  ya: -7.10428
-  z0: -0.88788
-  zv: 3.88111
-  za: -6.30341
-  throwButton: {fileID: 434189446}
 --- !u!1 &1376286052
 GameObject:
   m_ObjectHideFlags: 0
@@ -9324,7 +9448,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 1.3815e-41, w: 0}
+  m_BoundingSphereOverride: {x: 1e-45, y: 9.825e-42, z: 0, w: 2.4560342e-36}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -11183,7 +11307,7 @@ Transform:
   m_GameObject: {fileID: 2046629158}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.68193877, z: -0, w: 0.7314093}
-  m_LocalPosition: {x: -2.058, y: -1.251, z: 1.179}
+  m_LocalPosition: {x: -2.058, y: -0.92, z: 1.179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11345,9 +11469,11 @@ SceneRoots:
   - {fileID: 1700607693}
   - {fileID: 66605576}
   - {fileID: 2030906297}
+  - {fileID: 377736184}
   - {fileID: 1579829528}
   - {fileID: 1307657161}
   - {fileID: 1317498289}
   - {fileID: 1910108921}
   - {fileID: 1668239007}
   - {fileID: 647132402}
+  - {fileID: 83279196}
