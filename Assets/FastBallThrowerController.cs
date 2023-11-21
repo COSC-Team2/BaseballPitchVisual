@@ -8,17 +8,17 @@ public class BallThrowerController : MonoBehaviour
     public Rigidbody ballPrefab; // Public variable for the ball prefab
     private Rigidbody currentBall; // Reference to the current ball
 
-    private float c = 0.304f;
+    private float c = 0.304f; // Conversion to meters factor
     private float t = 0.0f;
-    public float x0 = 54.30401f;
-    public float xv = -132.6675f;
+    public float x0 = 54.30401f;  // Distance from Plate
+    public float xv = -132.6675f; // Speed
     public float xa = 16.49743f;
     public float y0 = 6.27917f;
     public float yv = -4.53417f;
-    public float ya = -7.10428f;
+    public float ya = -7.10428f;  // Downward Curve
     public float z0 = -0.88788f;
     public float zv = 3.88111f;
-    public float za = -6.30341f;
+    public float za = -6.30341f;  // Left-Right Curve
 
     public Button throwButton;
 
