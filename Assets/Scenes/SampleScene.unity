@@ -578,6 +578,126 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballThrowerController: {fileID: 377736185}
+--- !u!1 &88445570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 88445575}
+  - component: {fileID: 88445574}
+  - component: {fileID: 88445573}
+  - component: {fileID: 88445572}
+  - component: {fileID: 88445571}
+  m_Layer: 0
+  m_Name: StrikeZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &88445571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88445570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3695119aefef8384dbabbb37acfa89f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectB: {fileID: 1883821138}
+  redMaterial: {fileID: 2100000, guid: b53844f78d54cab41b9e47588cb0a914, type: 2}
+--- !u!65 &88445572
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88445570}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &88445573
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88445570}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9c52a7e85c986c2429f4638c6756501c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &88445574
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88445570}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &88445575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88445570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 0.55, y: 1, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &183446436
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,9 +936,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 83279197}
-        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
-        m_MethodName: curveballUpdate
+      - m_Target: {fileID: 377736185}
+        m_TargetAssemblyTypeName: BallThrowerController, Assembly-CSharp
+        m_MethodName: updatePitchTypeToCurveball
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -883,7 +1003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &253703857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1511,9 +1631,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 83279197}
-        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
-        m_MethodName: fastballUpdate
+      - m_Target: {fileID: 377736185}
+        m_TargetAssemblyTypeName: BallThrowerController, Assembly-CSharp
+        m_MethodName: updatePitchTypeToFastball
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1696,6 +1816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 1883821141}
+  currentBall: {fileID: 0}
+  currentPitchType: Fastball
   x0: 54.30401
   xv: -132.6675
   xa: 16.49743
@@ -1705,6 +1827,42 @@ MonoBehaviour:
   z0: -0.88788
   zv: 3.88111
   za: -6.30341
+  x0Fastball: 54.30401
+  xvFastball: -132.6675
+  xaFastball: 16.49743
+  y0Fastball: 6.27917
+  yvFastball: -4.53417
+  yaFastball: -7.10428
+  z0Fastball: -0.88788
+  zvFastball: 3.88111
+  zaFastball: -6.30341
+  x0Curveball: 54.53635
+  xvCurveball: -117.93326
+  xaCurveball: 11.8659
+  y0Curveball: 5.95112
+  yvCurveball: -2.82576
+  yaCurveball: -15.55566
+  z0Curveball: -1.27162
+  zvCurveball: 4.06967
+  zaCurveball: 2.93165
+  x0Slider: 54.91364
+  xvSlider: -124.38225
+  xaSlider: 12.80846
+  y0Slider: 5.7815
+  yvSlider: -5.83793
+  yaSlider: -10.47831
+  z0Slider: -1.16824
+  zvSlider: 3.63788
+  zaSlider: -4.82687
+  x0ChangeUp: 54.81912
+  xvChangeUp: -122.90993
+  xaChangeUp: 12.4181
+  y0ChangeUp: 5.8321
+  yvChangeUp: -2.67157
+  yaChangeUp: -9.00343
+  z0ChangeUp: -1.09937
+  zvChangeUp: 2.85785
+  zaChangeUp: -3.47889
   throwButton: {fileID: 0}
 --- !u!1 &390843417
 GameObject:
@@ -2501,112 +2659,6 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &547248007
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 547248011}
-  - component: {fileID: 547248010}
-  - component: {fileID: 547248009}
-  - component: {fileID: 547248008}
-  m_Layer: 0
-  m_Name: Quad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!64 &547248008
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547248007}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &547248009
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547248007}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &547248010
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547248007}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &547248011
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547248007}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1058201, y: -0.357, z: -0.12757039}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &556607705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3339,9 +3391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 83279197}
-        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
-        m_MethodName: changeUpUpdate
+      - m_Target: {fileID: 377736185}
+        m_TargetAssemblyTypeName: BallThrowerController, Assembly-CSharp
+        m_MethodName: updatePitchTypeToChangeUp
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3951,9 +4003,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 83279197}
-        m_TargetAssemblyTypeName: UpdateBallParameters, Assembly-CSharp
-        m_MethodName: sliderUpdate
+      - m_Target: {fileID: 377736185}
+        m_TargetAssemblyTypeName: BallThrowerController, Assembly-CSharp
+        m_MethodName: updatePitchTypeToSlider
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6498,7 +6550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1359942674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9886,7 +9938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: -0.414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9927,6 +9979,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_Name
       value: Baseball
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4742473837712756890, guid: 4ad6d2f003fc94441a63169cbf674eb6, type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
@@ -9992,13 +10048,13 @@ SphereCollider:
   m_Material: {fileID: 13400000, guid: 590dbebc6f287b940ac52b3dfea3bfc1, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Radius: 0.04
@@ -11034,7 +11090,6 @@ SceneRoots:
   - {fileID: 1165637713}
   - {fileID: 609192745}
   - {fileID: 1760043182}
-  - {fileID: 547248011}
   - {fileID: 1249224473}
   - {fileID: 1184572453}
   - {fileID: 1700607693}
@@ -11045,3 +11100,4 @@ SceneRoots:
   - {fileID: 1307657161}
   - {fileID: 647132402}
   - {fileID: 83279196}
+  - {fileID: 88445575}
