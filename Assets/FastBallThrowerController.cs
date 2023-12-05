@@ -13,7 +13,7 @@ public class BallThrowerController : MonoBehaviour
     private float realtime = 0.0f;
     public Slider timeSpeed;
 
-    public string currentPitchType = "Fastball";
+    private string currentPitchType = "Fastball";
 
     public float x0 = 54.30401f;  // Distance from Plate
     public float xv = -132.6675f; // Speed
@@ -25,45 +25,45 @@ public class BallThrowerController : MonoBehaviour
     public float zv = 3.88111f;
     public float za = -6.30341f;
 
-    public float x0Fastball = 54.30401f;  // Distance from Plate
-    public float xvFastball = -132.6675f; // Speed
-    public float xaFastball = 16.49743f; 
-    public float y0Fastball = 6.27917f;
-    public float yvFastball = -4.53417f;
-    public float yaFastball = -7.10428f;  // Downward Curve
-    public float z0Fastball = -0.88788f;
-    public float zvFastball = 3.88111f;
-    public float zaFastball = -6.30341f;  // Left-Right Curve
+    private float x0Fastball = 54.30401f;  // Distance from Plate
+    private float xvFastball = -132.6675f; // Speed
+    private float xaFastball = 16.49743f;
+    private float y0Fastball = 6.27917f;
+    private float yvFastball = -4.53417f;
+    private float yaFastball = -7.10428f;  // Downward Curve
+    private float z0Fastball = -0.88788f;
+    private float zvFastball = 3.88111f;
+    private float zaFastball = -6.30341f;  // Left-Right Curve
 
-    public float x0Curveball = 54.53635f;
-    public float xvCurveball = -117.93326f;
-    public float xaCurveball = 11.8659f;
-    public float y0Curveball = 5.95112f;
-    public float yvCurveball = -2.82576f;
-    public float yaCurveball = -15.55566f;
-    public float z0Curveball = -1.27162f;
-    public float zvCurveball = 4.06967f;
-    public float zaCurveball = 2.93165f;
+    private float x0Curveball = 54.53635f;
+    private float xvCurveball = -117.93326f;
+    private float xaCurveball = 11.8659f;
+    private float y0Curveball = 5.95112f;
+    private float yvCurveball = -2.82576f;
+    private float yaCurveball = -15.55566f;
+    private float z0Curveball = -1.27162f;
+    private float zvCurveball = 4.06967f;
+    private float zaCurveball = 2.93165f;
 
-    public float x0Slider = 54.91364f;
-    public float xvSlider = -124.38225f;
-    public float xaSlider = 12.80846f;
-    public float y0Slider = 5.7815f;
-    public float yvSlider = -5.83793f;
-    public float yaSlider = -10.47831f;
-    public float z0Slider = -1.16824f;
-    public float zvSlider = 3.63788f;
-    public float zaSlider = -4.82687f;
+    private float x0Slider = 54.91364f;
+    private float xvSlider = -124.38225f;
+    private float xaSlider = 12.80846f;
+    private float y0Slider = 5.7815f;
+    private float yvSlider = -5.83793f;
+    private float yaSlider = -10.47831f;
+    private float z0Slider = -1.16824f;
+    private float zvSlider = 3.63788f;
+    private float zaSlider = -4.82687f;
 
-    public float x0ChangeUp = 54.81912f;
-    public float xvChangeUp = -122.90993f;
-    public float xaChangeUp = 12.4181f;
-    public float y0ChangeUp = 5.8321f;
-    public float yvChangeUp = -2.67157f;
-    public float yaChangeUp = -9.00343f;
-    public float z0ChangeUp = -1.09937f;
-    public float zvChangeUp = 2.85785f;
-    public float zaChangeUp = -3.47889f;
+    private float x0ChangeUp = 54.81912f;
+    private float xvChangeUp = -122.90993f;
+    private float xaChangeUp = 12.4181f;
+    private float y0ChangeUp = 5.8321f;
+    private float yvChangeUp = -2.67157f;
+    private float yaChangeUp = -9.00343f;
+    private float z0ChangeUp = -1.09937f;
+    private float zvChangeUp = 2.85785f;
+    private float zaChangeUp = -3.47889f;
 
 public Button throwButton;
 
@@ -72,7 +72,7 @@ public Button throwButton;
         //throwButton.onClick.AddListener(Throw);
     }
 
-   public void Throw()
+    public void Throw()
     {
         Debug.Log("Throw");
 
