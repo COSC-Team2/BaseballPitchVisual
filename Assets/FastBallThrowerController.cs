@@ -10,6 +10,8 @@ public class BallThrowerController : MonoBehaviour
 
     private float c = 0.304f; // Conversion to meters factor
     private float t = 0.0f;
+    private float realtime = 0.0f;
+    public Slider timeSpeed;
 
     private string currentPitchType = "Fastball";
 
@@ -80,6 +82,7 @@ public Button throwButton;
         }
 
         t = 0f;
+        realtime = 0f;
         currentBall = Instantiate(ballPrefab, new Vector3(x0, y0, z0), Quaternion.identity);
 
 
@@ -96,14 +99,15 @@ public Button throwButton;
 
             currentBall.position = new Vector3(x, y, z);
 
-            if (t < 0.05f)
+            if (realtime < 0.03f)
             {
                 ClearTrail();
             }
 
             if (currentBall.gameObject.transform.position.z <= -0.125)
             {
-                t += Time.deltaTime;
+                realtime += Time.deltaTime;
+                t = realtime * timeSpeed.value;
                 //Destroy(currentBall.gameObject);
             }
 

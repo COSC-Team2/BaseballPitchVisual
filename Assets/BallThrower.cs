@@ -7,6 +7,7 @@ using System.IO;
 public class buttonThrow : MonoBehaviour
 {
     public Rigidbody rb;
+    public float timeSpeed = 1.0f;
     private float c = 0.304f;
     private float t = 0.0f;
     public float x0 = 54.30401f;
@@ -57,7 +58,7 @@ public class buttonThrow : MonoBehaviour
         }
         if (z < 0.0 && y > 0.0)      // if position (z) = home plate, time stops updating
         {
-            t += Time.deltaTime;
+            t += timeSpeed * Time.deltaTime;
         }
 
         Debug.Log($"X={x} | Y={y} | Z={z} | T={t}");
