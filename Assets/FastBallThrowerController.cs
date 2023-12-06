@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BallThrowerController : MonoBehaviour
 {
     public Rigidbody ballPrefab; // Public variable for the ball prefab
     public Rigidbody currentBall; // Reference to the current ball
+
+    public TextMeshProUGUI xText;
+    public TextMeshProUGUI xvText;
+    public TextMeshProUGUI xaText;
+    public TextMeshProUGUI yText;
+    public TextMeshProUGUI yvText;
+    public TextMeshProUGUI yaText;
+    public TextMeshProUGUI zText;
+    public TextMeshProUGUI zvText;
+    public TextMeshProUGUI zaText;     //text references 
+
 
     private float c = 0.304f; // Conversion to meters factor
     private float t = 0.0f;
@@ -96,6 +108,8 @@ public Button throwButton;
 
             currentBall.position = new Vector3(x, y, z);
 
+            UpdateTextValues();
+
             if (t < 0.05f)
             {
                 ClearTrail();
@@ -119,6 +133,18 @@ public Button throwButton;
             currentBall.GetComponent<TrailRenderer>().Clear();
             Debug.Log("Trail Cleared");
         }
+    }
+    void UpdateTextValues()
+    {
+        xText.text = $"x: {x0}";
+        xvText.text = $"xv: {xv}";
+        xaText.text = $"xa: {xa}";
+        yText.text = $"y: {y0}";
+        yvText.text = $"yv: {yv}";
+        yaText.text = $"ya: {ya}";
+        zText.text = $"z: {z0}";
+        zvText.text = $"zv: {zv}";
+        zaText.text = $"za: {za}";
     }
 
     public void updatePitchTypeToFastball()
