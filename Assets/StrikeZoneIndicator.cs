@@ -6,6 +6,13 @@ public class StrikeboxController : MonoBehaviour
 
     private GameObject[] indicators; // Keep track of all instantiated indicators
 
+    // Used for starting position indicator
+    private float RelHeightIndicator = 0f;
+    private float RelSideIndicator = 0f;
+    private float ExtentionIndicator = -18.47088f;
+
+    private float convertToMeters = 0.3048f; // Conversion to meters factor
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
@@ -16,6 +23,14 @@ public class StrikeboxController : MonoBehaviour
             // Store the newly instantiated indicator in the array
             AddIndicator(newIndicator);
         }
+    }
+
+    public void SpawnStartIndicator(BallThrowerController ballThrower)
+    {
+        Vector3 indicatorStartPosition = new Vector3((ballThrower.RelSide * convertToMeters), (ballThrower.RelHeight * convertToMeters), (ballThrower.Extension * convertToMeters) - 18.47088f);
+        GameObject newStartIndicator = Instantiate(indicatorPrefab, indicatorStartPosition, Quaternion.identity);
+
+        AddIndicator(newStartIndicator);
     }
 
     private void AddIndicator(GameObject indicator)

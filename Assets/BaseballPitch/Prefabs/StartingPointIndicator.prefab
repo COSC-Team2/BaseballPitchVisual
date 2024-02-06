@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3711303659629490070}
   - component: {fileID: 2231687482588893282}
   m_Layer: 0
-  m_Name: Strike
+  m_Name: StartingPointIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b53844f78d54cab41b9e47588cb0a914, type: 2}
+  - {fileID: 2100000, guid: 7d569a324d88b8c46be6b3ed8f5aa3d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
