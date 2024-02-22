@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3106655308635716166}
   - component: {fileID: 3711303659629490070}
   - component: {fileID: 2231687482588893282}
+  - component: {fileID: 7023166600840964595}
   m_Layer: 0
   m_Name: StartingPointIndicator
   m_TagString: Untagged
@@ -105,3 +106,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7023166600840964595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875670718766637559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd3611ee05c8bc40a5778eccab0fc3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
