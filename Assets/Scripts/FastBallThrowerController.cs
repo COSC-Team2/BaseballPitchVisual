@@ -29,6 +29,9 @@ public class BallThrowerController : MonoBehaviour
     public float PitchTrajectoryZcv; // 1 order coefficient for trajectory polynomial describing z-coordinate of the pitch
     public float PitchTrajectoryZca; // 2 order coefficient for trajectory polynomial describing z-coordinate of the pitch
 
+    public float spinAxis = 270;
+    public float spinRate = 1880;
+
 
     private float RelHeightFastball = 6.28194f;
     private float RelSideFastball = 0.89337f;
@@ -42,6 +45,9 @@ public class BallThrowerController : MonoBehaviour
     private float z0Fastball = -0.88788f;
     private float zvFastball = 3.88111f;
     private float zaFastball = -6.30341f;
+    //tilt and spin
+    private float spinAxisFastball = 217;
+    private float spinRateFastball = 1880;
 
 
     private float RelHeightCurveball = 5.94617f;
@@ -85,6 +91,8 @@ public class BallThrowerController : MonoBehaviour
     private float zvChangeUp = 2.85785f;
     private float zaChangeUp = -3.47889f;
 
+    public float testSpin = 0.0f;
+
     public Button throwButton;
 
     void Start()
@@ -108,6 +116,8 @@ public class BallThrowerController : MonoBehaviour
         realtime = 0f;
         currentBall = Instantiate(ballPrefab, new Vector3(PitchTrajectoryXc0, PitchTrajectoryYc0, PitchTrajectoryZc0), Quaternion.identity);
 
+        // currentBall.transform.rotation = Quaternion.Euler(0.0f, 0.0f, spinAxis);
+
         // Creating starting point indicator after ball is thrown
 
     }
@@ -121,10 +131,13 @@ public class BallThrowerController : MonoBehaviour
             float y = convertToMeters * (PitchTrajectoryYc0 + PitchTrajectoryYcv * t + PitchTrajectoryYca * tsqr);
             float x = convertToMeters * (-PitchTrajectoryZc0 - PitchTrajectoryZcv * t - PitchTrajectoryZca * tsqr);
 
+            currentBall.transform.rotation =  Quaternion.Euler(testSpin, 0.0f, spinAxis);
+            testSpin += 133.33f;
+
             currentBall.position = new Vector3(x, y, z);
 
             if (realtime < 0.03f)
-            {
+            {   
                 ClearTrail();
             }
 
