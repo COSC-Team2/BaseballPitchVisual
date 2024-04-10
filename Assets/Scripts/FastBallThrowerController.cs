@@ -132,7 +132,7 @@ public class BallThrowerController : MonoBehaviour
             float x = convertToMeters * (-PitchTrajectoryZc0 - PitchTrajectoryZcv * t - PitchTrajectoryZca * tsqr);
 
             currentBall.transform.rotation =  Quaternion.Euler(testSpin, 0.0f, spinAxis);
-            testSpin += 133.33f;
+            testSpin += 133.33f; // this affects rotation position NOT spin rate
 
             currentBall.position = new Vector3(x, y, z);
 
